@@ -1,0 +1,38 @@
+#Exercise 1 by Fuat Arslan
+1. sqoop import \
+	--options-file pass.txt \
+	--table calllog
+	--target-dir /user/training/problem1/output
+	--fields-terminated-by '\t'
+
+2. val rdd = sc.textFile("/user/training/problem1/output")
+	val rddDrop = rdd.filter(line => line.contains("DROPPED")
+	val rddFail = rdd.filter(line => line.contains("FAILED")
+	val rddSucc = rdd.filter(line => line.contains("SUCCESS")
+
+	rddDrop.saveAsTextFile("/user/training/problem2/output/status=DROPPED")
+	rddFail.saveAsTextFile("/user/training/problem2/output/status=FAILED")
+	rddSucc.saveAsTextFile("/user/training/problem2/output/status=SUCCESS")
+3. CREATE EXTERNAL TABLE calllog (
+  
+  call_num STRING,
+  start_time TIMESTAMP,
+  end_time TIMESTAMP,
+  from_phone_number STRING,
+  to_phone_number STRING
+  
+  ) 
+  PARTITIONED BY (status STRING)
+  ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t'
+  LOCATION '/user/training/problem2/calllog'
+
+4. MSCK REPAIR TABLE calllog
+  
+  SELECT * FROM calllog LIMIT 2;
+  
+  
+  SELECT status, substr(avg(unix_timestamp(end_time)-unix_timestamp(start_time)), 1,5) as timediff 
+  FROM calllog
+  GROUP BY status
+
