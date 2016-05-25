@@ -114,6 +114,16 @@ jsonCreator.saveAsTextFile("/user/training/problem9/output")
 */
 
 10. 
+/* 1. SOLUTION given an .avsc avro file path for altering table, */
+ALTER TABLE accounts_avro
+ 
+SET TBLPROPERTIES (
+('avro.schema.url'='user/training/problem10/output.avsc');
+
+SELECT * from accounts_avro limit 2;
+
+/*2. SOLUTION  we also can define modification over avro as literal as below.*/
+
 
 ALTER TABLE accounts_avro SET TBLPROPERTIES (
 
