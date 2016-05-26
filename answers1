@@ -52,9 +52,10 @@
  --fields-terminated-by '\t'
 
 6.
-    val accounts = sc.textFile("/user/training/problem5/output/accounts")
-	val account_dev = sc.textFile("/user/training/problem5/output/accountdevice")
 
+val accounts = sc.textFile("/user/training/problem5/output/accounts")
+
+val account_dev = sc.textFile("/user/training/problem5/output/accountdevice")
 
 val accounts1 = accounts.map(line => line.split('\t')).map(line =>( line(0),line))
 
@@ -74,6 +75,7 @@ val sorted1 = sc.parallelize(sorted.takeOrdered(10))
 val output = sorted1.map(line => line._2)
 
 output.saveAsTextFile("/user/training/problem6/output")
+
 
 7. sqoop export --connect jdbc:mysql://localhost:3306/loudacre --username training --password training --table oldestactivations --export-dir /user/training/problem6/output --fields-terminated-by '\t'
 
