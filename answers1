@@ -52,7 +52,13 @@
  --fields-terminated-by '\t'
 
 6.
-```python
+Usage
+-----
+
+```ruby
+require 'github/markup'
+GitHub::Markup.render('README.markdown', "* One\n* Two")
+```
 val accounts = sc.textFile("/user/training/problem5/output/accounts")
 
 val account_dev = sc.textFile("/user/training/problem5/output/accountdevice")
