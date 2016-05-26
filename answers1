@@ -197,8 +197,12 @@ ALTER TABLE accounts_avro SET TBLPROPERTIES (
   "tableName" : "accounts"
 }');
 
+<<<<<<< HEAD
 11. flume-ng agent --conf /etc/flume-ng/conf --conf-file ~/flume.conf --name agent1 -Dflume.root.logger=INFO,console
 
 sudo mkdir -p /tmp/spooldir
 sudo chmod a+w -R /tmp
 ./copy-move-weblogs.sh /tmp/spooldir/
+=======
+
+>>>>>>> d1d1f5bdc5ca9b3e558cb0c0ef073d3be48db39b
