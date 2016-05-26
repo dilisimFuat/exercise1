@@ -1,0 +1,69 @@
+{
+  "type" : "record",
+  "name" : "sqoop_import_accounts",
+  "doc" : "Sqoop import of accounts",
+  "fields" : [ {
+    "name" : "acct_num",
+    "type" : [ "long", "null" ],
+    "columnName" : "acct_num",
+    "sqlType" : "4"
+  }, {
+    "name" : "acct_create_dt",
+    "type" : [ "long", "null" ],
+    "columnName" : "acct_create_dt",
+    "sqlType" : "93"
+  }, {
+    "name" : "acct_close_dt",
+    "type" : [ "long", "null" ],
+    "columnName" : "acct_close_dt",
+    "sqlType" : "93"
+  }, {
+    "name" : "first_name",
+    "type" : [ "string", "null" ],
+    "columnName" : "first_name",
+    "sqlType" : "12"
+  }, {
+    "name" : "address",
+    "type" : [ "string", "null" ],
+    "columnName" : "address",
+    "sqlType" : "12"
+  }, {
+    "name" : "city",
+    "type" : [ "string", "null" ],
+    "columnName" : "city",
+    "sqlType" : "12"
+  }, {
+    "name" : "state",
+    "type" : [ "string", "null" ],
+    "columnName" : "state",
+    "sqlType" : "12"
+  }, {
+    "name" : "zipcode",
+    "type" : [ "string", "null" ],
+    "columnName" : "zipcode",
+    "sqlType" : "12"
+  }, {
+    "name" : "phone_number",
+    "type" : [ "string", "null" ],
+    "columnName" : "phone_number",
+    "sqlType" : "12"
+  }, {
+    "name" : "created",
+    "type" : [ "long", "null" ],
+    "columnName" : "created",
+    "sqlType" : "93"
+  }, {
+    "name" : "modified_date",
+    "type" : [ "long", "null" ],
+    "columnName" : "modified",
+    "sqlType" : "93",
+     "aliases":["modified"]
+  }, {
+    "name" : "last_accessed",
+    "type" : [ "long", "null" ],
+    "columnName" : "modified",
+    "sqlType" : "93",
+    "default" : 42
+  } ],
+  "tableName" : "accounts"
+}
