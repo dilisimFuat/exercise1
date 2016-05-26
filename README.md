@@ -2,7 +2,6 @@
 Usage
 -----
 
-```ruby
-require 'github/markup'
-GitHub::Markup.render('README.markdown', "* One\n* Two")
+```
+require pre setup VM with files. 
 ```
