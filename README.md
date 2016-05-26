@@ -3,5 +3,5 @@ Usage
 -----
 
 ```
-require pre setup VM with files. 
+require pre setup VM with necessary files. 
 ```
