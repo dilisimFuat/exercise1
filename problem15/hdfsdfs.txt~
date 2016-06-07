@@ -1,7 +1,21 @@
+#create a directory under training folder in hdfs
 a.hdfs dfs -mkdir /user/training/problem15
+
+#copy a hdfs file into a hdfs directory
 b.hdfs dfs -cp /loudacre/base_stations.tsv  /user/training/problem15
+
+#copy a file from local to given hdfs dir.
 c.hdfs dfs -put /etc/passwd /user/training/problem15
+
+#show last 5 line of a file in hdfs
 d.hdfs dfs -cat /loudacre/devicestatus.txt | tail -n 5
+
+#concatinate hdfs files into one file in local directory
+#-getmerge <hdfs.dir> <local.dir>
 e.hdfs dfs -getmerge /loudacre/accounts accounts/accounts.txt
+
+#show hadoop statistics such as capacity , health etc.
 f.hdfs fsck / or hadoop fsck /
+
+#change ownership of a hdfs folder to an owner whose name is hive with mode #600 (owner can read and write) -R defines recursively
 g.hdfs dfs -chown -R hive:600 /user/training/problem15 #Yes, we still can read and write files under this directory.
