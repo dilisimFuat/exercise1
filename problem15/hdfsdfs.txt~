@@ -1,7 +1,0 @@
-a.hdfs dfs -mkdir /user/training/problem15
-b.hdfs dfs -cp /loudacre/base_stations.tsv  /user/training/problem15
-c.hdfs dfs -put /etc/passwd /user/training/problem15
-d.hdfs dfs -cat /loudacre/devicestatus.txt | tail -n 5
-e.hdfs dfs -getmerge /loudacre/accounts accounts/accounts.txt
-f.hdfs fsck / or hadoop fsck /
-g.hdfs dfs -chown -R hive:600 /user/training/problem15 #Yes, we still can read and write files under this directory.
