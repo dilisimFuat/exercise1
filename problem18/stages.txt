@@ -1,0 +1,32 @@
+x1 = sc.textFile(“/some/path”) 
+1 stage, Stage Id	Description	Submitted	Duration	Tasks: Succeeded/Total	Input	Output	Shuffle Read	Shuffle Write
+
+x2 = sc.textFile(“/other/path”) //1 stage
+Stage Id	Description	Submitted	Duration	Tasks: Succeeded/Total	Input	Output	Shuffle Read	Shuffle Write 
+
+x3 = x1.union(x2)
+2 stages and same statistics name as above with different parameters 
+
+
+val x4 =x3.keyBy(line => line.split('\t')(3))
+1 stage and statistics
+ 
+val x5 = x4.mapValues(line => line.split("\t")(2))
+1 stage and statistics
+
+val x6 = x5.filter(line => !line._1.equals("AZ"))
+1 stage 
+val x6 = x5.filter(line => !line._1.equals("AZ")).map(line => (line._1,1))
+
+val x7 = x6.reduceByKey(_+_)
+1 stage
+ 
+val x8 = x7.filter(line => line._2 > 44)
+1 stage
+ 
+val x9 = x8.join(x4) 
+2 stages
+
+x9.saveAsTextFile("/loudacre/problem18")
+1 stages
+
