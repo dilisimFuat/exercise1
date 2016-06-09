@@ -10,7 +10,9 @@ from bs4 import BeautifulSoup
 from operator import add
 def wcount(fname):    
     lines = sc.textFile("/loudacre/kb/"+fname)
-    counts = lines.map(lambda line:  BeautifulSoup(line, 'html.parser').get_text().strip()).flatMap(lambda x: x.split())                   .map(lambda x: (x, 1))                   .reduceByKey(add).map(lambda (word,count): fname+"|"+word+"|"+`count`)
+    counts = lines.map(lambda line:  BeautifulSoup(line, 'html.parser').get_text().strip()).flatMap(lambda x: x.split()) \
+				  .map(lambda x: (x, 1))   \                
+				  .reduceByKey(add).map(lambda (word,count): fname+"|"+word+"|"+`count`)
     return sc.parallelize(counts.collect()) 
 htmlrdd = sc.wholeTextFiles("/loudacre/kb/*").map(lambda (fname, content): str(fname.split("/")[-1]))
 totals = sc.parallelize([])
