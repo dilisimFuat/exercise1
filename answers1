@@ -88,7 +88,9 @@ output.saveAsTextFile("/user/training/problem6/output")
 8. 
  hdfs dfs -mkdir /user/training/problem8
  hdfs dfs -mkdir /user/training/problem8/output
- hdfs dfs -put chatlogs/ /user/training/problem8/output/
+
+ hdfs dfs -mkdir /user/training/problem8/output
+ hdfs dfs -put chatlogs/* /user/training/problem8/output
 
 9.
  val chatlogDF = sqlContext.load("/user/training/problem8/output/chatlogs/*", "json") 
