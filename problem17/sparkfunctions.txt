@@ -2,19 +2,19 @@ org.apache.spark.api.java
 org.apache.spark.api.java.function
 pyspark.RDD
 a.Scala url
-	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.api.java.JavaRDD
+	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.RDD
 	
 	Python url
 	http://spark.apache.org/docs/latest/api/python/pyspark.html?highlight=rdd#pyspark.RDD
 
 b. Scala url
-	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.api.java.JavaPairRDD
+	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions
 	Python url 
 	Same as 'a'
 
 c. Scala url
-	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.api.java.JavaPairRDD
-	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.api.java.JavaRDD
+	
+	http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.DoubleRDDFunctions
 
 	Python url
 	http://spark.apache.org/docs/latest/api/python/pyspark.html?highlight=#pyspark.RDD
