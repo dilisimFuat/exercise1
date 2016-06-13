@@ -6,7 +6,7 @@ Example file: name /loudacre/kb/​KBDOC­00001.html
 Example output: KBDOC­00001.html|change|10 , this means KBDOC­00001.html file has 10 of 'change' words
 
 '''
-from bs4 import BeautifulSoup
+'''from bs4 import BeautifulSoup
 from operator import add
 def wcount(fname):    
     lines = sc.textFile("/loudacre/kb/"+fname)
@@ -18,6 +18,15 @@ htmlrdd = sc.wholeTextFiles("/loudacre/kb/*").map(lambda (fname, content): str(f
 totals = sc.parallelize([])
 for i in htmlrdd.collect():
     totals = totals.union(wcount(i))
+'''
+from bs4 import BeautifulSoup
+totals = sc.wholeTextFiles("/loudacre/kb*") \
+    	.map(lambda (fname, content): (str(fname.split("/")[-1]), content)) \
+    	.map(lambda (fname,line):  (fname,BeautifulSoup(line, 'html.parser').get_text().strip())) \
+    	.flatMapValues(lambda x: x.split()) \
+    	.map(lambda x: (x, 1)) \
+    	.reduceByKey(lambda x, y: x + y) \
+     	.map(lambda ((fname,word), count): fname+"|"+word+"|"+`count`).take(10)
 
 totals.saveAsTextFile("/user/training/problem16/")
 
