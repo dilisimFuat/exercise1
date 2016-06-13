@@ -1,0 +1,14 @@
+#Options file for Sqoop import
+#This file can be called as --options-file <this.file.dir> 
+#
+
+#Connect parameter and value
+--connect
+jdbc:mysql://localhost/loudacre
+
+#Username and password
+--username
+training
+--password
+training
+#Remaining options can be addeed if necessary.
