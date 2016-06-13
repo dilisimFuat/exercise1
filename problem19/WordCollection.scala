@@ -1,3 +1,4 @@
+/**
 val htmlrdd = sc.textFile("/loudacre/kb/*")
 val rdd = htmlrdd.mapPartitionsWithIndex{
       (files, iterator) => {
@@ -20,4 +21,6 @@ val rdd = htmlrdd.mapPartitionsWithIndex{
       }
       }
 #rdd.sum()
+*/
+
 rdd.saveAsTextFile("/loudacre/mapPartittion2")
