@@ -17,6 +17,7 @@ e.hdfs dfs -getmerge /loudacre/accounts accounts/accounts.txt
 #show hadoop statistics such as capacity , health etc.
 f.hdfs fsck / or hadoop fsck /
   hdfs dfs -count -h  /file 
+	hdfs dfs -du -h /
 count
 
 """Usage: hadoop fs -count [-q] [-h] [-v] <paths>
