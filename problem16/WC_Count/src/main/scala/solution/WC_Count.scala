@@ -6,7 +6,7 @@ import org.apache.spark.SparkConf
 
 object WC_Count {
    def main(args: Array[String]) {
-     if (args.length < 1) {
+     if (args.length < 2) {
        System.err.println("Usage: WC_EachFile <in file> <out file>")
        System.exit(1)
      }
