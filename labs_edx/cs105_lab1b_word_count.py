@@ -1,4 +1,4 @@
-# Databricks notebook source exported at Tue, 9 Aug 2016 15:21:20 UTC
+# Databricks notebook source exported at Wed, 10 Aug 2016 07:33:26 UTC
 # MAGIC %md
 # MAGIC <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/> </a> <br/> This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"> Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. </a>
 
@@ -43,6 +43,7 @@ labVersion = 'cs105x-word-count-df-0.1.0'
 
 wordsDF = sqlContext.createDataFrame([('cat',), ('elephant',), ('rat',), ('rat',), ('cat', )], ['word'])
 wordsDF.show()
+
 print type(wordsDF)
 wordsDF.printSchema()
 
@@ -90,7 +91,7 @@ Test.assertEquals(pluralDF.columns, ['word'], "there should be one column named 
 # TODO: Replace <FILL IN> with appropriate code
 from pyspark.sql.functions import length
 #pluralLengthsDF = pluralDF.select(length(pluralDF.word).alias('word'))
-pluralLengthsDF = pluralDF.select(length('word').alias('word'))
+pluralLengthsDF = pluralDF.select(length('word')) #.alias('word'))
 pluralLengthsDF.show()
 
 # COMMAND ----------
@@ -177,7 +178,7 @@ Test.assertEquals(uniqueWordsCount, 3, 'incorrect count of unique words')
 # COMMAND ----------
 
 # TODO: Replace <FILL IN> with appropriate code
-averageCount = float(wordCountsDF.groupBy().avg('count').collect()[0][0])
+averageCount = wordCountsDF.groupBy().avg('count').first()[0]
 
 
 print averageCount
@@ -288,10 +289,6 @@ Test.assertEquals(testPunctDF.select(removePunctuation(col('_1'))).first()[0],
 # MAGIC ** (4c) Load a text file **
 # MAGIC 
 # MAGIC For the next part of this lab, we will use the [Complete Works of William Shakespeare](http://www.gutenberg.org/ebooks/100) from [Project Gutenberg](http://www.gutenberg.org/wiki/Main_Page). To convert a text file into a DataFrame, we use the `sqlContext.read.text()` method. We also apply the recently defined `removePunctuation()` function using a `select()` transformation to strip out the punctuation and change all text to lower case.  Since the file is large we use `show(15)`, so that we only print 15 lines.
-
-# COMMAND ----------
-
-shakespeareDF.printSchema()
 
 # COMMAND ----------
 
